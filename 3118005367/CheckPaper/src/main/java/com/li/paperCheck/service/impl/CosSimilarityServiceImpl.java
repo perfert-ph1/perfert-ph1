@@ -7,13 +7,18 @@ import org.wltea.analyzer.core.Lexeme;
 
 
 import java.io.StringReader;
+import java.math.RoundingMode;
+import java.text.NumberFormat;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.TreeMap;
 
 public class CosSimilarityServiceImpl implements CosSimilarityService {
     @Override
     public double getSimilarity(String context, String copyContext) {
+
+        if(context == null || copyContext == null){
+            return -1;
+        }
         //初始文本
         Map<String,Integer> originalWeightMap = new HashMap<String,Integer>();
         //copy文本
@@ -87,7 +92,10 @@ public class CosSimilarityServiceImpl implements CosSimilarityService {
 
 
         result = up/(down1*down2);
-        return result;
+        NumberFormat nf = NumberFormat.getNumberInstance();
+        nf.setMaximumFractionDigits(2);
+        nf.setRoundingMode(RoundingMode.DOWN);
+        return Double.parseDouble(nf.format(result*100));
     }
 
     public String formatWord(Lexeme lexeme){

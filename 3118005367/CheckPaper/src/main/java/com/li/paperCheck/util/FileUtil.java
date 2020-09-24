@@ -26,6 +26,7 @@ public class FileUtil {
         }catch (Exception e){
             throw new MyException("将目标文件文本转换为字符串时发生错误。");
         }
+
         return new String(sb);
     }
 
