@@ -1,0 +1,4 @@
+com\li\paperCheck\service\impl\CosSimilarityServiceImpl.class
+com\li\paperCheck\SimHash.class
+com\li\paperCheck\bean\Word.class
+com\li\paperCheck\service\CosSimilarityService.class
